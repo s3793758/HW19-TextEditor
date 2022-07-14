@@ -34,6 +34,11 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60,
+                    //d     h   m     s
+      }),
     ],
   });
 registerRoute();
